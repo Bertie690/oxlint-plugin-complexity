@@ -7,16 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.0.0] - 2026-10-11
+
 ### Changed
 
 - **BREAKING:** Raise the minimum supported Node.js version from 20 to 22 (`engines.node: >=22`).
 - **BREAKING:** Replace the exported `MaxCyclomaticOptions` and `MaxCognitiveOptions` types with `ComplexityOptions`. Use `cyclomatic` and `cognitive` instead of the obsolete `max` field.
 - **BREAKING:** Remove public exports for `createCognitiveVisitor`, `createCyclomaticVisitor`, `createComplexityVisitor`, `VisitorContext`, and `FunctionScope`. Use `createCombinedComplexityVisitor` for AST analysis or `/standalone` for source strings. Individual visitor migrations change loop labels and cognitive recursion point locations and ordering; see the README migration guide.
 - Unify cognitive complexity handlers and route fixture tests through the lint rule's visitor.
+- Bump oxc-parser from 0.150.0 to 0.152.0 and prettier from 3.9.8 to 3.9.9 (#168)
 
 ### Fixed
 
-- Fix nested cognitive complexity scoring: remove parent function penalties and inherit enclosing nesting + 1 (#165).
+- Fix nested cognitive complexity scoring: remove parent function penalties and inherit enclosing nesting + 1 (#165). Scores for code containing nested functions or callbacks change, so some existing warnings may appear or disappear.
 
 ## [3.0.1] - 2026-09-29
 
@@ -302,7 +305,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - GitHub Actions CI pipeline
 - Pre-commit hooks with Husky
 
-[Unreleased]: https://github.com/itaymendel/oxlint-plugin-complexity/compare/v3.0.1...HEAD
+[Unreleased]: https://github.com/itaymendel/oxlint-plugin-complexity/compare/v4.0.0...HEAD
+[4.0.0]: https://github.com/itaymendel/oxlint-plugin-complexity/compare/v3.0.1...v4.0.0
 [3.0.1]: https://github.com/itaymendel/oxlint-plugin-complexity/compare/v3.0.0...v3.0.1
 [3.0.0]: https://github.com/itaymendel/oxlint-plugin-complexity/compare/v2.1.8...v3.0.0
 [2.1.8]: https://github.com/itaymendel/oxlint-plugin-complexity/compare/v2.1.7...v2.1.8
